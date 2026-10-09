@@ -1,0 +1,42 @@
+QA — Pipeline refatorado — Semana 21
+
+Sintaxe JavaScript: PASS (node --check)
+IDs duplicados: PASS (0)
+Caracteres corrompidos comuns: PASS
+Código antigo de drag-and-drop removido: PASS
+
+Interações Chromium:
+01 Run disabled initially — PASS
+02 4 empty slots initially — PASS
+03 Wrong order rejected — PASS
+04 Run remains disabled after wrong order — PASS
+05 Undo removes one step — PASS
+06 Reset empties pipeline — PASS
+07 Correct order accepted — PASS
+08 Run enabled after correct order — PASS
+09 Test failure visible (esperado 4, obtido 5) — PASS
+10 Result / Alert visible — PASS
+11 Bug challenge appears after simulation — PASS
+12 Explanation appears after simulation — PASS
+13 Continue deploy rejected — PASS
+14 Stop deploy accepted — PASS
+15 No horizontal overflow 320px — PASS
+16 Pipeline renders at 320px — PASS
+17 No horizontal overflow 375px — PASS
+18 Pipeline renders at 375px — PASS
+19 No horizontal overflow 425px — PASS
+20 Pipeline renders at 425px — PASS
+21 No horizontal overflow 768px — PASS
+22 Pipeline renders at 768px — PASS
+23 No horizontal overflow 1024px — PASS
+24 Pipeline renders at 1024px — PASS
+25 No horizontal overflow 1366px — PASS
+26 Pipeline renders at 1366px — PASS
+27 No horizontal overflow 1920px — PASS
+28 Pipeline renders at 1920px — PASS
+29 Theme toggles — PASS
+
+Browser page errors: 0
+Resultado: 29/29 PASS
+
+Observação: a navegação para URLs locais é bloqueada no ambiente de teste. Os testes de interface foram executados em Chromium com HTML/CSS/JS carregados em memória. A persistência por reload real não foi validada nesta rodada.

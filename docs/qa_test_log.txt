@@ -1,0 +1,43 @@
+PASS | HTML carregado 
+PASS | Sem modal de conquista 
+PASS | Texto sem XP/Nível/Conquistas 
+PASS | Mapa com 6 etapas 
+PASS | Progresso inicia simples | 0 de 6 etapas
+PASS | Painel abre 
+PASS | Modo escuro alterna | light->dark
+PASS | Identificação salva 
+PASS | Etapa 1 conclui 
+PASS | Etapa 2 conclui 
+PASS | Pipeline reordenado | commit,build,test,monitor
+PASS | Etapa 3 conclui 
+PASS | Etapa 4 conclui 
+PASS | CFR 20% | 20%
+PASS | MTTR 1h30 | 1h 30min
+PASS | Etapa 5 conclui 
+PASS | Quiz 1 5/5 | Resultado: 5/5
+PASS | Desafio final conclui 
+PASS | Tela final aparece 
+PASS | Progresso 100% | Progresso da Semana: 100%
+PASS | Estado sem XP/níveis/badges | calculations,identity,pipelineOrder,quizAnswers,quizScores,responses,stages,theme
+PASS | Relatório mostra etapas 
+PASS | Relatório sem XP/Nível 
+PASS | Responsividade 320px | scrollWidth=320
+PASS | Layout mobile 320px | nav=none,menu=flex
+PASS | Menu 320px abre/fecha 
+PASS | Mapa vertical 320px | 280px
+PASS | Responsividade 375px | scrollWidth=375
+PASS | Layout mobile 375px | nav=none,menu=flex
+PASS | Menu 375px abre/fecha 
+PASS | Mapa vertical 375px | 335px
+PASS | Responsividade 425px | scrollWidth=425
+PASS | Layout mobile 425px | nav=none,menu=flex
+PASS | Menu 425px abre/fecha 
+PASS | Mapa vertical 425px | 385px
+PASS | Responsividade 768px | scrollWidth=768
+PASS | Layout mobile 768px | nav=none,menu=flex
+PASS | Menu 768px abre/fecha 
+PASS | Responsividade 1024px | scrollWidth=1009
+PASS | Responsividade 1366px | scrollWidth=1351
+PASS | Responsividade 1920px | scrollWidth=1905
+PASS | Sem exceções JS | 0
+SUMMARY 42 / 42

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="Semana 21 de Processos de Desenvolvimento de Software: Cultura DevOps, CALMS, pipeline de feedback e métricas DORA." name="description" />
+  <title>Processos de Desenvolvimento de Software | Semana 21</title>
+  <link href="style.css" rel="stylesheet" />
+  <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer="" src="script.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar">
+    <a aria-label="Voltar ao início" class="brand" href="#inicio">
+      <span class="brand-badge">S21</span>
+      <span><strong>Processos de Desenvolvimento de Software</strong><small>DevOps, feedback contínuo e DORA</small></span>
+    </a>
+    <div class="top-actions">
+      <button aria-controls="studentPanel" aria-expanded="false" class="icon-btn" id="studentPanelToggle" type="button">✓ <span>Progresso</span></button>
+      <button aria-label="Alternar tema" class="icon-btn" id="themeToggle" type="button">🌙 <span>Modo escuro</span></button>
+      <button aria-controls="mainNav" aria-expanded="false" class="icon-btn mobile" id="menuToggle" type="button">☰</button>
+    </div>
+    <nav aria-label="Navegação principal" class="nav" id="mainNav">
+      <a href="#aula1">Aula 1</a>
+      <a href="#aula2">Aula 2</a>
+      <a href="#aula3">Aula 3</a>
+      <a href="#missao-final">Desafio final</a>
+      <a href="#entrega">Entrega</a>
+    </nav>
+  </header>
+  <aside aria-label="Painel de progresso" class="student-panel" hidden="" id="studentPanel"><button aria-label="Fechar painel" class="panel-close" id="studentPanelClose" type="button">×</button>
+    <p class="eyebrow">Progresso da jornada</p>
+    <h2 id="panelStudentName">Aluno</h2>
+    <div class="simple-status">
+      <div><span>Etapas concluídas</span><strong id="stagesText">0 / 6</strong></div>
+      <div><span>Progresso</span><strong id="panelProgressText">0%</strong></div>
+    </div>
+    <div aria-label="Progresso geral da jornada" class="panel-progress-track">
+      <div id="panelProgressBar"></div>
+    </div>
+    <p class="panel-subtitle">Marcos</p>
+    <div aria-label="Marcos concluídos" class="milestone-shelf" id="milestoneShelf"></div>
+  </aside>
+  <main id="conteudo">
+    <section class="hero section" id="inicio">
+      <div class="hero-copy reveal">
+        <span class="kicker">Semana 21 · Processos de Desenvolvimento de Software</span>
+        <h1>Da confusão entre equipes à <span>melhoria contínua</span></h1>
+        <p>Uma jornada de aprendizagem sobre <strong>DevOps</strong>, <strong>CALMS</strong>, <strong>pipeline de feedback</strong>, <strong>fail fast</strong> e <strong>métricas DORA</strong>.</p>
+        <div class="actions">
+          <a class="btn primary" href="#identificacao">Começar aula</a>
+          <a class="btn secondary" href="#mapa">Ver mapa</a>
+        </div>
+        <p class="source-note">Baseado nos materiais oficiais anexados da Semana 21. O foco desta versão é reorganizar o conteúdo como um fluxo de processo: problema → prática → feedback → medição → melhoria.</p>
+      </div>
+      <div class="hero-visual reveal">
+        <div aria-label="Fluxo resumido da semana" class="flow-orbit">
+          <span>Dev + Ops</span><i>→</i><span>CALMS</span><i>→</i><span>Pipeline</span><i>→</i><span>DORA</span><i>→</i><span>Melhoria</span>
+        </div>
+        <div class="terminal hero-terminal">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>processo_de_software.txt</span></div>
+          <pre><code><span class="muted"># problema</span>
+wall_of_confusion = True
+
+<span class="muted"># mudança de processo</span>
+calms()
+feedback_continuo()
+pipeline()
+
+<span class="muted"># medir para melhorar</span>
+dora_metrics()
+<span class="success">melhoria_continua()</span></code></pre>
+        </div>
+      </div>
+    </section>
+    <section class="section compact" id="mapa">
+      <div class="section-head reveal">
+        <span>Mapa da jornada</span>
+        <h2>Seis etapas, um mesmo processo</h2>
+        <p>Acompanhe a aula como uma sequência simples: estudar, praticar, receber feedback e avançar.</p>
+      </div>
+      <div aria-label="Mapa de progressão" class="quest-map reveal" id="questMap">
+        <article data-stage="problem"><span class="quest-icon">🧱</span><small>Etapa 01</small>
+          <h3>Entenda o problema</h3>
+          <p>Wall of Confusion</p><b class="quest-state">Pendente</b>
+        </article><span class="quest-arrow">→</span>
+        <article data-stage="calms"><span class="quest-icon">🤝</span><small>Etapa 02</small>
+          <h3>Conecte DevOps e CALMS</h3>
+          <p>Cultura e colaboração</p><b class="quest-state">Pendente</b>
+        </article><span class="quest-arrow">→</span>
+        <article data-stage="pipeline"><span class="quest-icon">⚙️</span><small>Etapa 03</small>
+          <h3>Monte o pipeline</h3>
+          <p>Build, teste e alerta</p><b class="quest-state">Pendente</b>
+        </article><span class="quest-arrow">→</span>
+        <article data-stage="bug"><span class="quest-icon">🐞</span><small>Etapa 04</small>
+          <h3>Decida sobre o bug</h3>
+          <p>Fail fast e deploy</p><b class="quest-state">Pendente</b>
+        </article><span class="quest-arrow">→</span>
+        <article data-stage="dora"><span class="quest-icon">📊</span><small>Etapa 05</small>
+          <h3>Leia os dados</h3>
+          <p>Métricas DORA</p><b class="quest-state">Pendente</b>
+        </article><span class="quest-arrow">→</span>
+        <article data-stage="final"><span class="quest-icon">✓</span><small>Desafio final</small>
+          <h3>Melhore o processo</h3>
+          <p>Desafio aplicado</p><b class="quest-state">Pendente</b>
+        </article>
+      </div>
+    </section>
+    <section class="section" id="identificacao">
+      <div class="section-head reveal">
+        <span>Antes de começar</span>
+        <h2>Identificação do aluno</h2>
+        <p>Os dados são salvos apenas neste navegador e serão usados no relatório final.</p>
+      </div>
+      <div class="panel form-grid reveal">
+        <label>Nome completo<input autocomplete="name" id="studentName" placeholder="Digite seu nome" type="text" /></label>
+        <label>Turma<input id="studentClass" placeholder="Ex.: 1º DS" type="text" /></label>
+        <label>Número da chamada <small>(opcional)</small><input id="studentNumber" inputmode="numeric" placeholder="Ex.: 12" type="text" /></label>
+        <label>Data<input id="studentDate" type="date" /></label>
+        <div class="form-footer"><span class="save-status" id="saveStatus">✓ Progresso salvo localmente</span><button class="btn danger" id="resetProgress" type="button">Reiniciar progresso</button></div>
+      </div>
+    </section>
+    <section class="section compact">
+      <div class="progress-card reveal">
+        <div class="progress-row"><strong id="progressLabel">Progresso da Semana: 0%</strong><span id="progressCount">0 de 6 etapas</span></div>
+        <div class="progress-track">
+          <div id="progressBar"></div>
+        </div>
+        <div class="chips" id="progressChips"></div>
+      </div>
+    </section>
+    <section class="section lesson" id="aula1">
+      <div class="lesson-title reveal"><span class="number">01</span>
+        <div><span class="kicker">Aula 1 · Etapa 1 — O problema entre Dev e Ops</span>
+          <h2>O problema não é só código: é também processo</h2>
+          <p>O material parte do conflito clássico entre Desenvolvimento e Operações e mostra como DevOps surge para integrar pessoas, processos e tecnologia.</p>
+        </div>
+      </div>
+      <div aria-label="Simulação do Wall of Confusion" class="conflict-stage reveal">
+        <div class="team dev"><b>DEV</b>
+          <p>“Funciona na minha máquina!”</p>
+        </div>
+        <div aria-hidden="true" class="code-box" id="codeBox">📦 código</div>
+        <div class="wall" id="wall"><span>WALL OF CONFUSION</span></div>
+        <div class="team ops"><b>OPS</b>
+          <p>“Quebrou em produção!”</p>
+        </div>
+      </div>
+      <div class="actions reveal"><button class="btn primary" id="simulateWall" type="button">▶ Simular o conflito</button><button class="btn secondary" id="removeWall" type="button">🤝 Mostrar abordagem DevOps</button></div>
+      <div class="inline-feedback info reveal" id="wallFeedback">Clique em uma simulação para visualizar o problema do “muro da confusão”.</div>
+      <div class="problem-grid reveal">
+        <article>
+          <h3>Problema</h3>
+          <p>Desenvolvimento busca mudanças rápidas; Operações busca estabilidade. Se cada equipe trabalha isoladamente, problemas aparecem tarde.</p>
+        </article>
+        <article>
+          <h3>Analogia</h3>
+          <p>Um trabalho em grupo em que cada aluno faz sua parte sem conversar com os demais. As partes podem até funcionar separadas, mas o conjunto falha.</p>
+        </article>
+        <article>
+          <h3>Consequência</h3>
+          <p>Atraso, retrabalho, conflito interno, baixa visibilidade e dificuldade para saber onde o fluxo quebrou.</p>
+        </article>
+      </div>
+      <div class="compare-box reveal">
+        <div>
+          <h3>Antes: silos</h3>
+          <div class="mini-flow vertical"><span>Desenvolvimento</span><i>↓</i><span>Entrega manual</span><i>↓</i><span>Operações</span><i>↓</i><span>Problemas tardios</span></div>
+        </div>
+        <div>
+          <h3>Depois: fluxo compartilhado</h3>
+          <div class="mini-flow vertical"><span>Desenvolvimento</span><i>↔</i><span>Testes</span><i>↔</i><span>Operações</span><i>↔</i><span>Monitoramento</span></div>
+        </div>
+      </div>
+      <div class="section-head reveal"><span>Etapa 2</span>
+        <h2>CALMS: cinco lentes para melhorar o processo</h2>
+        <p>Selecione cada pilar para relacionar problema, analogia e aplicação prática.</p>
+      </div>
+      <div class="calms-grid reveal" id="calmsGrid">
+        <button class="calms-card" data-calms="culture" type="button"><strong>C</strong><span>Culture</span><small>Colaboração e responsabilidade compartilhada</small></button>
+        <button class="calms-card" data-calms="automation" type="button"><strong>A</strong><span>Automation</span><small>Automatizar tarefas repetitivas</small></button>
+        <button class="calms-card" data-calms="lean" type="button"><strong>L</strong><span>Lean</span><small>Eliminar desperdícios</small></button>
+        <button class="calms-card" data-calms="measurement" type="button"><strong>M</strong><span>Measurement</span><small>Medir com dados</small></button>
+        <button class="calms-card" data-calms="sharing" type="button"><strong>S</strong><span>Sharing</span><small>Compartilhar conhecimento e falhas</small></button>
+      </div>
+      <div aria-live="polite" class="concept-detail reveal" id="calmsDetail">Escolha um card CALMS para ver a explicação.</div>
+      <div class="challenge reveal">
+        <div><span class="challenge-tag">Desafio CALMS</span>
+          <h3>O time executa manualmente a mesma tarefa dezenas de vezes e erros humanos são frequentes.</h3>
+          <p>Qual pilar merece atenção primeiro?</p>
+        </div>
+        <div class="choice-row" data-challenge="calms"><button data-answer="culture">Culture</button><button data-answer="automation">Automation</button><button data-answer="lean">Lean</button><button data-answer="sharing">Sharing</button></div>
+        <div class="inline-feedback info" id="calmsChallengeFeedback">Escolha uma alternativa.</div>
+      </div>
+      <div class="material reveal">
+        <div>
+          <h3>📑 Material original — Aula 1</h3>
+          <p>Origem do DevOps, Wall of Confusion, evolução Agile → DevOps e CALMS.</p>
+        </div><a class="btn secondary" href="materials/aula1.pptx" rel="noopener" target="_blank">Abrir slides</a>
+      </div>
+      <div class="quiz reveal" data-quiz="lesson1" id="quiz1"></div>
+      <div class="checkpoint reveal">
+        <h3>Checkpoint — Aula 1</h3>
+        <p>Você deve conseguir explicar: por que DevOps surgiu, o que é Wall of Confusion e como CALMS ajuda a transformar o processo.</p><button class="btn primary checkpoint-btn" data-complete="calms" type="button">✓ Concluir Aula 1</button><a class="btn secondary" href="#aula1">Quero revisar</a>
+      </div>
+    </section>
+    <section class="section lesson alt" id="aula2">
+      <div class="lesson-title reveal"><span class="number">02</span>
+        <div><span class="kicker">Aula 2 · Pipeline de feedback</span>
+          <h2>Descobrir cedo custa menos do que descobrir tarde</h2>
+          <p>O material introduz o custo do atraso, pipeline de feedback, build, testes, monitoramento, fail fast e lead time.</p>
+        </div>
+      </div>
+      <div class="delay-scenario reveal">
+        <div class="delay-card late"><span>🐌</span>
+          <h3>Erro descoberto em 2 dias</h3>
+          <p>Mais retrabalho, maior impacto e mais tempo até a correção.</p>
+        </div>
+        <div class="delay-vs">VS</div>
+        <div class="delay-card early"><span>⚡</span>
+          <h3>Erro descoberto em 2 minutos</h3>
+          <p>Feedback rápido, correção cedo e menor risco para o cliente.</p>
+        </div>
+      </div>
+      <div class="pipeline-lab reveal" id="pipelineLab">
+        <div class="section-head"><span>Etapa 3</span>
+          <h2>Monte o pipeline</h2>
+          <p>Escolha as etapas na ordem em que o fluxo acontece. A atividade funciona por clique: cada escolha ocupa automaticamente o próximo espaço.</p>
+        </div>
+        <div class="pipeline-builder">
+          <div class="pipeline-builder-head">
+            <div>
+              <h3>Etapas disponíveis</h3>
+              <p>Clique em uma etapa para adicioná-la ao fluxo.</p>
+            </div><span class="pipeline-counter" id="pipelineCounter">0 de 4 etapas</span>
+          </div>
+          <div aria-label="Etapas disponíveis para montar o pipeline" class="pipeline-choices" id="pipelineChoices">
+            <button type="button" data-pipeline-choice="commit"><strong>Commit / Push</strong><small>envia a alteração e dispara o fluxo</small></button>
+            <button type="button" data-pipeline-choice="build"><strong>Build</strong><small>prepara o software</small></button>
+            <button type="button" data-pipeline-choice="test"><strong>Teste</strong><small>valida o comportamento</small></button>
+            <button type="button" data-pipeline-choice="result"><strong>Resultado / Alerta</strong><small>mostra o resultado à equipe</small></button>
+          </div>
+          <div class="pipeline-divider" aria-hidden="true"><span>Seu pipeline</span></div>
+          <div aria-label="Pipeline montado pelo aluno" aria-live="polite" class="pipeline-slots" id="pipelineSlots"></div>
+          <div class="actions pipeline-actions">
+            <button class="btn secondary" id="undoPipeline" type="button">↶ Desfazer</button>
+            <button class="btn secondary" id="resetPipeline" type="button">Recomeçar</button>
+            <button class="btn primary" id="checkPipeline" type="button">Verificar pipeline</button>
+            <button class="btn secondary" disabled id="runPipeline" type="button">Executar simulação</button>
+          </div>
+          <div class="inline-feedback info" id="pipelineFeedback">Monte as quatro etapas e depois verifique a sequência.</div>
+          <div class="pipeline-explanation" hidden id="pipelineExplanation">
+            <article><strong>Por que o Build passou?</strong>
+              <p>O código conseguiu ser preparado corretamente. Isso não garante que a regra de negócio esteja certa.</p>
+            </article>
+            <article><strong>Por que o Teste falhou?</strong>
+              <p>O sistema produziu 5 quando o resultado esperado era 4. O teste validou o comportamento e encontrou a falha.</p>
+            </article>
+            <article><strong>Por que o pipeline parou?</strong>
+              <p>Continuar a entrega permitiria que um defeito conhecido chegasse ao usuário. Esse é o princípio de fail fast.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+      <div class="build-test-demo reveal">
+        <div class="demo-card">
+          <h3>BUILD</h3>
+          <p>“O software consegue ser preparado?”</p>
+          <div class="demo-status success">✓ Compilação/preparação OK</div>
+        </div>
+        <div class="not-equal">≠</div>
+        <div class="demo-card">
+          <h3>TEST</h3>
+          <p>“O software faz o que deveria?”</p>
+          <div class="test-case"><span>Esperado: <b>4</b></span><span>Obtido: <b>5</b></span></div>
+          <div class="demo-status error">✕ Regra de negócio falhou</div>
+        </div>
+      </div>
+      <div class="challenge bug-battle reveal" id="bugBattle">
+        <div><span class="challenge-tag">Etapa 4 · Desafio — Decisão de deploy</span>
+          <h3>Sistema financeiro: 2 + 2 está retornando 5.</h3>
+          <p>Build: <strong>✓ sucesso</strong> · Teste: <strong>✕ falha</strong></p>
+          <p>O que o time deve fazer?</p>
+        </div>
+        <div class="choice-row"><button data-bug-answer="deploy">Continuar o deploy</button><button data-bug-answer="stop">Interromper o deploy</button></div>
+        <label>Justificativa<textarea id="deployJustification" placeholder="Explique por que o sistema pode ou não seguir para produção." rows="4"></textarea></label>
+        <div class="inline-feedback info" id="bugFeedback">Escolha uma decisão técnica.</div>
+      </div>
+      <div class="concept-grid reveal">
+        <article>
+          <h3>Fail fast</h3>
+          <p>Não significa desejar falhas. Significa fazer o problema aparecer cedo, enquanto o custo e o impacto ainda são menores.</p>
+        </article>
+        <article>
+          <h3>Lead time</h3>
+          <p>Tempo do início de uma mudança/ideia até sua chegada à produção. Feedback rápido ajuda a reduzir esperas e retrabalho.</p>
+        </article>
+        <article>
+          <h3>Test ≠ Monitor</h3>
+          <p>Testes verificam comportamento esperado. Monitoramento torna o estado e as falhas visíveis para a equipe agir rapidamente.</p>
+        </article>
+      </div>
+      <div class="material reveal">
+        <div>
+          <h3>📑 Materiais originais — Aula 2 e atividade</h3>
+          <p>Pipeline de feedback e roteiro “Simulação de pipeline”.</p>
+        </div>
+        <div class="actions"><a class="btn secondary" href="materials/aula2.pptx" rel="noopener" target="_blank">Abrir slides</a><a class="btn secondary" href="materials/atividade_aluno.docx" rel="noopener" target="_blank">Abrir atividade</a></div>
+      </div>
+      <div class="quiz reveal" data-quiz="lesson2" id="quiz2"></div>
+      <div class="checkpoint reveal">
+        <h3>Checkpoint — Aula 2</h3>
+        <p>Você deve conseguir diferenciar build, test e monitoramento, além de justificar por que um teste falho deve interromper a entrega.</p><button class="btn primary checkpoint-btn" data-complete="pipeline" type="button">✓ Concluir etapa do pipeline</button>
+      </div>
+    </section>
+    <section class="section lesson" id="aula3">
+      <div class="lesson-title reveal"><span class="number">03</span>
+        <div><span class="kicker">Aula 3 · Métricas DevOps (DORA)</span>
+          <h2>Sem medir, melhoria vira opinião</h2>
+          <p>O material compara equipes e introduz quatro métricas para avaliar velocidade, qualidade e estabilidade do fluxo.</p>
+        </div>
+      </div>
+      <div class="team-comparison reveal">
+        <article><span>Equipe A</span>
+          <h3>1 deploy/semana</h3>
+          <p>Bugs frequentes</p>
+          <p>Correção demora dias</p>
+        </article>
+        <div class="vs">VS</div>
+        <article class="featured"><span>Equipe B</span>
+          <h3>5 deploys/dia</h3>
+          <p>Poucos bugs</p>
+          <p>Correção rápida</p>
+        </article>
+      </div>
+      <div class="stop-think reveal">
+        <h3>Como provar a performance?</h3>
+        <p>“Parece melhor” não é suficiente. Precisamos de indicadores que descrevam o fluxo e a resposta a falhas.</p>
+      </div>
+      <div class="dora-grid reveal">
+        <article><span class="metric-icon">⏱️</span>
+          <h3>Lead Time</h3>
+          <p>Quanto tempo uma alteração leva para chegar à produção?</p><small>Desejável: reduzir sem sacrificar qualidade.</small>
+        </article>
+        <article><span class="metric-icon">🚀</span>
+          <h3>Deployment Frequency</h3>
+          <p>Com que frequência o time entrega valor ao cliente?</p><small>Deve ser interpretada junto com estabilidade.</small>
+        </article>
+        <article><span class="metric-icon">🛠️</span>
+          <h3>MTTR</h3>
+          <p>Quanto tempo, em média, o serviço leva para ser restaurado após falha?</p><small>Desejável: reduzir o tempo de recuperação.</small>
+        </article>
+        <article><span class="metric-icon">📉</span>
+          <h3>Change Fail Rate</h3>
+          <p>Qual porcentagem dos deploys causa falhas?</p><small>Desejável: reduzir a taxa de mudanças problemáticas.</small>
+        </article>
+      </div>
+      <div class="calculator-grid reveal">
+        <div class="calc-card">
+          <h3>Calculadora — Change Fail Rate</h3><label>Total de deploys<input id="deployTotal" min="1" type="number" value="20" /></label><label>Deploys com falha<input id="deployFailures" min="0" type="number" value="4" /></label><button class="btn primary" id="calcCfr" type="button">Calcular</button>
+          <div class="calc-result"><span>CFR</span><strong id="cfrResult">—</strong></div>
+        </div>
+        <div class="calc-card">
+          <h3>Calculadora — Recuperação</h3><label>Hora da falha<input id="failureTime" type="time" value="14:00" /></label><label>Hora da recuperação<input id="recoveryTime" type="time" value="15:30" /></label><button class="btn primary" id="calcMttr" type="button">Calcular</button>
+          <div class="calc-result"><span>Tempo de recuperação</span><strong id="mttrResult">—</strong></div>
+        </div>
+      </div>
+      <div class="dora-mission reveal">
+        <div class="section-head"><span>Etapa 5 · Desafio de diagnóstico</span>
+          <h2>Leia os indicadores como um analista</h2>
+        </div>
+        <div class="dashboard-grid">
+          <div><span>Lead Time</span><strong>8 dias</strong></div>
+          <div><span>Deployment Frequency</span><strong>1/mês</strong></div>
+          <div><span>MTTR</span><strong>12 h</strong></div>
+          <div><span>Change Fail Rate</span><strong>35%</strong></div>
+        </div>
+        <label>Qual indicador evidencia forte problema de estabilidade e por quê?<textarea id="doraDiagnosis" placeholder="Escreva sua análise." rows="4"></textarea></label>
+        <label>Que melhoria de processo você recomendaria?<textarea id="doraRecommendation" placeholder="Relacione testes, automação, monitoramento ou outra prática estudada." rows="4"></textarea></label>
+        <button class="btn primary" id="completeDora" type="button">Registrar diagnóstico</button>
+        <div class="inline-feedback info" id="doraFeedback">A resposta é aberta. O importante é justificar usando os indicadores e o processo.</div>
+      </div>
+      <div class="balance reveal">
+        <div>
+          <h3>Velocidade</h3>
+          <p>Lead Time + Deployment Frequency</p>
+        </div><span>↔</span>
+        <div>
+          <h3>Estabilidade</h3>
+          <p>MTTR + Change Fail Rate</p>
+        </div>
+      </div>
+      <div class="material reveal">
+        <div>
+          <h3>📑 Material original — Aula 3</h3>
+          <p>Métricas DORA e decisão baseada em dados.</p>
+        </div><a class="btn secondary" href="materials/aula3.pptx" rel="noopener" target="_blank">Abrir slides</a>
+      </div>
+      <div class="quiz reveal" data-quiz="lesson3" id="quiz3"></div>
+      <div class="checkpoint reveal">
+        <h3>Checkpoint — Aula 3</h3>
+        <p>Você deve saber interpretar as quatro métricas em conjunto, sem tratá-las como ranking simplista.</p><button class="btn primary checkpoint-btn" data-complete="dora" type="button">✓ Concluir etapa DORA</button>
+      </div>
+    </section>
+    <section class="section alt" id="conexao">
+      <div class="section-head reveal"><span>Como tudo se conecta?</span>
+        <h2>Problema → prática → evidência → melhoria</h2>
+      </div>
+      <div class="connection-flow reveal">
+        <article><b>1</b>
+          <h3>Equipes isoladas</h3>
+          <p>Wall of Confusion</p>
+        </article><i>→</i>
+        <article><b>2</b>
+          <h3>Cultura</h3>
+          <p>DevOps + CALMS</p>
+        </article><i>→</i>
+        <article><b>3</b>
+          <h3>Feedback rápido</h3>
+          <p>Pipeline + testes</p>
+        </article><i>→</i>
+        <article><b>4</b>
+          <h3>Visibilidade</h3>
+          <p>Monitoramento</p>
+        </article><i>→</i>
+        <article><b>5</b>
+          <h3>Medição</h3>
+          <p>DORA</p>
+        </article><i>→</i>
+        <article><b>6</b>
+          <h3>Decisão</h3>
+          <p>Melhoria contínua</p>
+        </article>
+      </div>
+    </section>
+    <section class="section" id="quiz-final">
+      <div class="section-head reveal"><span>Revisão final</span>
+        <h2>Quiz final — Pense como uma equipe de software</h2>
+        <p>Questões baseadas em situações de processo, não apenas memorização.</p>
+      </div>
+      <div class="quiz reveal" data-quiz="final" id="quizFinal"></div>
+    </section>
+    <section class="section alt" id="missao-final">
+      <div class="section-head reveal"><span>Desafio final</span>
+        <h2>Melhore um processo real</h2>
+        <p>Analise o cenário e proponha uma melhoria coerente com os conteúdos da Semana 21.</p>
+      </div>
+      <div class="final-mission reveal">
+        <div class="scenario">
+          <h3>Sistema escolar</h3>
+          <p>O deploy é manual. Não existem testes automatizados. Os erros são percebidos pelos alunos. Desenvolvimento não conversa com infraestrutura e as correções demoram dias.</p>
+        </div>
+        <label>1. Identifique dois problemas do processo.<textarea id="finalProblems" rows="4"></textarea></label>
+        <label>2. Relacione um ou mais pilares CALMS.<textarea id="finalCalms" rows="4"></textarea></label>
+        <label>3. Proponha um pipeline básico.<textarea id="finalPipeline" placeholder="Ex.: commit → build → teste → resultado/alerta" rows="4"></textarea></label>
+        <label>4. Escolha duas métricas DORA para acompanhar.<textarea id="finalMetrics" rows="4"></textarea></label>
+        <label>5. Justifique suas escolhas.<textarea id="finalJustification" rows="5"></textarea></label>
+        <button class="btn primary" id="completeFinalMission" type="button">Concluir desafio final</button>
+        <div class="inline-feedback info" id="finalMissionFeedback">Preencha todos os campos para concluir.</div>
+      </div>
+      <div class="week-complete reveal" hidden="" id="weekComplete">
+        <h2>✓ Semana 21 concluída</h2>
+        <p>Você percorreu a jornada de aprendizagem e já consegue relacionar colaboração, automação, feedback e métricas ao processo de desenvolvimento de software.</p>
+        <ul>
+          <li>✓ Wall of Confusion</li>
+          <li>✓ DevOps e CALMS</li>
+          <li>✓ Pipeline de feedback</li>
+          <li>✓ Fail fast e decisão de deploy</li>
+          <li>✓ Métricas DORA</li>
+          <li>✓ Desafio final</li>
+        </ul>
+      </div>
+    </section>
+    <section class="section delivery-section" id="entrega">
+      <div class="section-head reveal"><span>Entrega</span>
+        <h2>Relatório da Semana 21</h2>
+        <p>O relatório reúne identificação, etapas concluídas, resultados dos quizzes, atividade do pipeline, diagnóstico DORA e desafio final.</p>
+      </div>
+      <div class="message-box reveal" id="deliveryValidation">Preencha nome e turma para liberar a geração do relatório.</div>
+      <div class="delivery-actions reveal"><button class="btn primary" id="generatePdf" type="button">Gerar PDF</button><button class="btn secondary" id="printReport" type="button">Imprimir / Salvar como PDF</button><button class="btn secondary" id="previewReport" type="button">Atualizar prévia</button></div>
+      <div class="report-preview reveal" id="reportPreview"></div>
+      <div class="print-report" id="printReportContent"></div>
+      <p class="privacy-note">Os dados ficam no localStorage do navegador. A página não envia respostas para um servidor.</p>
+    </section>
+  </main>
+  <div aria-live="polite" class="toast" hidden="" id="toast" role="status"></div>
+  <footer><strong>Semana 21 · Processos de Desenvolvimento de Software</strong><span>DevOps, feedback contínuo e métricas DORA</span></footer>
+</body>
+
+</html>
